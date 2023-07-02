@@ -1,0 +1,54 @@
+#!/usr/bin/python3
+"""
+Factorization of Numbers
+
+Usage: factors <file>
+
+The <file> parameter should be a text file containing natural numbers to factor.
+Each number should be written on a separate line.
+All numbers in the file will be valid natural numbers greater than 1.
+There will be no empty lines or spaces before/after the numbers.
+The file will always end with a new line.
+Output Format: n = p * q
+
+Each line in the output represents a factorization of a number.
+The factors p and q are not necessarily prime numbers.
+The format should follow the example provided.
+Note:
+
+The order in which the numbers are processed can be of your choice.
+The program should not rely on any external dependencies.
+The program should terminate gracefully within 5 seconds.
+Make sure to push all your scripts, source code, etc. to your repository.
+"""
+# library to get arguments
+import sys
+
+
+# fn unpack number factorial
+def fc():
+    """
+    function fc to search file to convert number and format n=p*q
+    """
+    try:
+        revfile = sys.argv[1]
+        with open(revfile) as f:
+            for revnumber in f:
+                revnumber = int(revnumber)
+                if revnumber % 2 == 0:
+                        print("{}={}*{}".format(revnumber, revnumber // 2, 2))
+                        continue
+                i = 3
+                while i < revnumber // 2:
+                    if revnumber % i == 0:
+                        print("{}={}*{}".format(revnumber, revnumber // i, i))
+                        break
+                    i = i + 2
+                if i == (revnumber // 2) + 1:
+                    print("{}={}*{}".format(revnumber, revnumber, 1))
+    except (IndexError):
+        pass
+
+
+# autostart
+fc()
